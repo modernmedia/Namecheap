@@ -14,11 +14,11 @@ class Ssl extends Namecheap
      * @var string
      */
     private $namespace = 'namecheap.ssl.';
-    
+
     /**
      * Activates a newly purchased SSL certificate
      *
-     * @param array $params            
+     * @param array $params
      *
      * @return \Namecheap\Api\Response
      * @see http://developer.namecheap.com/docs/doku.php?id=api-reference:ssl:activate
@@ -33,7 +33,7 @@ class Ssl extends Namecheap
      *
      * @param
      *            s array $params
-     *            
+     *
      * @return \Namecheap\Api\Response
      * @see http://developer.namecheap.com/docs/doku.php?id=api-reference:ssl:getinfo
      */
@@ -45,7 +45,7 @@ class Ssl extends Namecheap
     /**
      * Parsers the CSR
      *
-     * @param array $params            
+     * @param array $params
      *
      * @return \Namecheap\Api\Response
      * @see http://developer.namecheap.com/docs/doku.php?id=api-reference:ssl:parsecsr
@@ -58,7 +58,7 @@ class Ssl extends Namecheap
     /**
      * Gets approver email list for the requested domain
      *
-     * @param array $params            
+     * @param array $params
      *
      * @return \Namecheap\Api\Response
      * @see http://developer.namecheap.com/docs/doku.php?id=api-reference:ssl:getapproveremaillist
@@ -71,7 +71,7 @@ class Ssl extends Namecheap
     /**
      * Returns a list of SSL certificates for a particular user
      *
-     * @param array $params            
+     * @param array $params
      *
      * @return \Namecheap\Api\Response
      * @see http://developer.namecheap.com/docs/doku.php?id=api-reference:ssl:getlist
@@ -84,12 +84,25 @@ class Ssl extends Namecheap
     /**
      * Creates a new SSL certificate
      *
-     * @param array $params            
+     * @param array $params
      *
      * @return \Namecheap\Api\Response
      * @see http://developer.namecheap.com/docs/doku.php?id=api-reference:ssl:create
      */
     public function create(array $params)
+    {
+        return $this->client->send($this->namespace.__FUNCTION__, $params);
+    }
+
+    /**
+     * Renews a new SSL certificate
+     *
+     * @param array $params
+     *
+     * @return \Namecheap\Api\Response
+     * @see https://www.namecheap.com/support/api/methods/ssl/renew.aspx
+     */
+    public function renew(array $params)
     {
         return $this->client->send($this->namespace.__FUNCTION__, $params);
     }
